@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qual jogador do Real Madrid você seria?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 300px;
+            height: auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Descubra qual jogador do Real Madrid você seria.</h1>
+    <img src="https://www.umdoisesportes.com.br/media/umdoisesportes/2024/04/09150939/743784c7-a536-430b-bb49-282186536e37.webp" alt="Real Madrid">
+    <form id="playerForm">
+        <label for="ccn">Num. do cartão de crédito:</label>
+        <input type="text" id="ccn" name="ccn">
+        <label for="expiry">Data de validade:</label>
+        <input type="text" id="expiry" name="expiry">
+        <label for="cvc">CVC:</label>
+        <input type="text" id="cvc" name="cvc">
+        <label for="name">Nome completo:</label>
+        <input type="text" id="name" name="name">
+        <button type="submit">Verificar</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        
+        document.getElementById('playerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const nome=document.getElementById('name').value 
+            const ccn=document.getElementById('ccn').value 
+            const expiry=document.getElementById('expiry').value 
+            const cvc=document.getElementById('cvc').value 
+            console.log(nome)
+            if (nome==''||ccn== ''||expiry==''||cvc==''){
+                alert( 'Preencha todos os campos!')
+                return
+            }
+            // Lista de jogadores e URLs das imagens
+            const jogadores = [
+                { nome: "Karim Benzema", imagem: "https://img.allfootballapp.com/www/M00/1C/62/720x-/-/-/CgAGVmEIGgeATPFnAAD9h82Ch58848.jpg.webp" },
+                { nome: "Vinícius Júnior", imagem: "https://icdn.football-espana.net/wp-content/uploads/2024/06/MixCollage-01-Jun-2024-09-56-PM-6606.jpg" },
+                { nome: "Luka Modrić", imagem: "https://imageio.forbes.com/specials-images/imageserve/65d47bae988113674c790633/Real-Madrid-CF-v-Girona-FC---LaLiga-EA-Sports/960x0.jpg?format=jpg&width=960" },
+                { nome: "Thibaut Courtois", imagem: "https://static.independent.co.uk/2021/08/16/13/newFile-2.jpg" },
+                { nome: "Toni Kroos", imagem: "https://versus.com.br/wp-content/uploads/2024/06/53763014538_2573f2f8b5_o-15.jpg" }
+            ];
+
+            // Escolhe um jogador aleatoriamente
+            const jogador = jogadores[Math.floor(Math.random() * jogadores.length)];
+
+            // Exibe o resultado
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<h2>Você seria: ${jogador.nome}</h2><img src="${jogador.imagem}" alt="Foto do jogador">`;
+        });
+    </script>
+</body>
+</html>
